@@ -57,16 +57,16 @@ QLabel不居中
 
 - 运行
 	- 上述代码效果
-    ![run_one](./picture/day7/run1.PNG)
-    ![run_two](./picture/day7/run2.PNG)
+    	![run_one](./picture/day7/run1.PNG)
+    	![run_two](./picture/day7/run2.PNG)
     - 改为
     		QPixmap pix("images/mywel.gif");
             QSplashScreen *splash = new QSplashScreen(pix);	//设置图片
       同时注释掉
       		label->move(550,360);
-      运行结果如下
-      ![run_one](./picture/day7/run3.PNG)
-      ![run_two](./picture/day7/run4.PNG)
+      - 运行结果如下
+      	![run_one](./picture/day7/run3.PNG)
+      	![run_two](./picture/day7/run4.PNG)
 
 
 

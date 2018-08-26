@@ -54,75 +54,72 @@
     ui-&gt;LED2_STATUS-&gt;setStyleSheet(QStringLiteral("background-color: rgb(100,0,0);"));
     ui-&gt;LED3_STATUS-&gt;setStyleSheet(QStringLiteral("background-color: rgb(100,0,0);"));
 </code></pre><ul>
-<li>在ui设计模式中，右击<code>button</code>选择转到槽，选择<code>clicked()</code>-&gt;<code>OK</code>，进入函数编辑界面添加功能代码:</li><li><p>按下按键时改变LED状态</p>
-</li><li><p>练习</p>
-<ul>
-<li><p>完成布局后，添加新的界面<br>  1.<img src="picture/day2/add_dialog_class.PNG" alt="step_one"><br>  2.<img src="picture/day2/choose%20item.PNG" alt="step_two"><br>  3.<img src="picture/day2/total_system.PNG" alt="step_three"><br>  4.添加代码(SmartHome.h中)</p>
-<pre><code data-origin="<pre><code>  private:
-  Ui::SmartHome *ui;
-  Dialog *w;    //加这一句
-</code></pre>">  private:
-  Ui::SmartHome *ui;
-  Dialog *w;    //加这一句
-</code></pre><p>  5.添加代码(SmartHome.cpp中)</p>
-<pre><code data-origin="<pre><code>  void SmartHome::on_confirmBtn_clicked()
+<li>在ui设计模式中，右击<code>button</code>选择转到槽，选择<code>clicked()</code>-&gt;<code>OK</code>，进入函数编辑界面添加功能代码:</li><li>按下按键时改变LED状态</li></ul><h2 id="练习"><a name="练习" href="#练习"></a>练习</h2><ul>
+<li><p>完成布局后，添加新的界面<br>1.<img src="picture/day2/add_dialog_class.PNG" alt="step_one"><br>2.<img src="picture/day2/choose%20item.PNG" alt="step_two"><br>3.<img src="picture/day2/total_system.PNG" alt="step_three"><br>4.添加代码(SmartHome.h中)</p>
+<pre><code data-origin="<pre><code>      private:
+      Ui::SmartHome *ui;
+      Dialog *w;    //加这一句
+</code></pre>">      private:
+      Ui::SmartHome *ui;
+      Dialog *w;    //加这一句
+</code></pre><p>5.添加代码(SmartHome.cpp中)</p>
+<pre><code data-origin="<pre><code>      void SmartHome::on_confirmBtn_clicked()
+          {
+      //获取文本框中的信息
+      QString userInfo = ui-&amp;gt;userNameTextEdit-&amp;gt;text();
+      QString pwdInfo = ui-&amp;gt;passwordTextEdit-&amp;gt;text();
+      //登陆判断
+      if(userInfo==NULL)
+          QMessageBox::warning(NULL, &quot;warning&quot;, &quot;userName should not be NULL&quot;);
+      else if(pwdInfo==NULL)
+          QMessageBox::warning(NULL, &quot;warning&quot;, &quot;password should not be NULL&quot;);
+      if(userInfo ==&quot;nine&quot; &amp;amp;&amp;amp; pwdInfo==&quot;123&quot;)
       {
-  //获取文本框中的信息
-  QString userInfo = ui-&amp;gt;userNameTextEdit-&amp;gt;text();
-  QString pwdInfo = ui-&amp;gt;passwordTextEdit-&amp;gt;text();
-  //登陆判断
-  if(userInfo==NULL)
-      QMessageBox::warning(NULL, &quot;warning&quot;, &quot;userName should not be NULL&quot;);
-  else if(pwdInfo==NULL)
-      QMessageBox::warning(NULL, &quot;warning&quot;, &quot;password should not be NULL&quot;);
-  if(userInfo ==&quot;nine&quot; &amp;amp;&amp;amp; pwdInfo==&quot;123&quot;)
-  {
-      QMessageBox::information(NULL, &quot;successful&quot;, &quot;logging successful,see you next time&quot;);
-      this-&amp;gt;close();    //关闭主界面
-      w = new Dialog(this);    //实例化Dialog
-      w-&amp;gt;show();        //显示Dialig
-  }
-  else
-  {
-      QMessageBox::critical(NULL, &quot;fail&quot;, &quot;can not logging&quot;);
-      ui-&amp;gt;passwordTextEdit-&amp;gt;clear();
-  }
-  }
-
-  void SmartHome::on_cancelBtn_clicked()
-  {
-      this-&amp;gt;close();
-  }
-</code></pre>">  void SmartHome::on_confirmBtn_clicked()
+          QMessageBox::information(NULL, &quot;successful&quot;, &quot;logging successful,see you next time&quot;);
+          this-&amp;gt;close();    //关闭主界面
+          w = new Dialog(this);    //实例化Dialog
+          w-&amp;gt;show();        //显示Dialig
+      }
+      else
       {
-  //获取文本框中的信息
-  QString userInfo = ui-&gt;userNameTextEdit-&gt;text();
-  QString pwdInfo = ui-&gt;passwordTextEdit-&gt;text();
-  //登陆判断
-  if(userInfo==NULL)
-      QMessageBox::warning(NULL, "warning", "userName should not be NULL");
-  else if(pwdInfo==NULL)
-      QMessageBox::warning(NULL, "warning", "password should not be NULL");
-  if(userInfo =="nine" &amp;&amp; pwdInfo=="123")
-  {
-      QMessageBox::information(NULL, "successful", "logging successful,see you next time");
-      this-&gt;close();    //关闭主界面
-      w = new Dialog(this);    //实例化Dialog
-      w-&gt;show();        //显示Dialig
-  }
-  else
-  {
-      QMessageBox::critical(NULL, "fail", "can not logging");
-      ui-&gt;passwordTextEdit-&gt;clear();
-  }
-  }
+          QMessageBox::critical(NULL, &quot;fail&quot;, &quot;can not logging&quot;);
+          ui-&amp;gt;passwordTextEdit-&amp;gt;clear();
+      }
+      }
 
-  void SmartHome::on_cancelBtn_clicked()
-  {
-      this-&gt;close();
-  }
-</code></pre></li></ul>
-</li><li>运行<br><img src="picture/day2/smartHome.PNG" alt="smartHome"><br><img src="picture/day2/smartHome_input.PNG" alt="smartHome_input"><br><img src="picture/day2/smartHome_successful.PNG" alt="smartHome_sucessful"><br><img src="picture/day2/smartHome_successful_2.PNG" alt="smartHome_sucessful_2"><br><img src="picture/day2/smartHome_fail.PNG" alt="smartHome_fail"></li></ul>
+      void SmartHome::on_cancelBtn_clicked()
+      {
+          this-&amp;gt;close();
+      }
+</code></pre>">      void SmartHome::on_confirmBtn_clicked()
+          {
+      //获取文本框中的信息
+      QString userInfo = ui-&gt;userNameTextEdit-&gt;text();
+      QString pwdInfo = ui-&gt;passwordTextEdit-&gt;text();
+      //登陆判断
+      if(userInfo==NULL)
+          QMessageBox::warning(NULL, "warning", "userName should not be NULL");
+      else if(pwdInfo==NULL)
+          QMessageBox::warning(NULL, "warning", "password should not be NULL");
+      if(userInfo =="nine" &amp;&amp; pwdInfo=="123")
+      {
+          QMessageBox::information(NULL, "successful", "logging successful,see you next time");
+          this-&gt;close();    //关闭主界面
+          w = new Dialog(this);    //实例化Dialog
+          w-&gt;show();        //显示Dialig
+      }
+      else
+      {
+          QMessageBox::critical(NULL, "fail", "can not logging");
+          ui-&gt;passwordTextEdit-&gt;clear();
+      }
+      }
+
+      void SmartHome::on_cancelBtn_clicked()
+      {
+          this-&gt;close();
+      }
+</code></pre></li><li>运行<br><img src="picture/day2/smartHome.PNG" alt="smartHome"><br><img src="picture/day2/smartHome_input.PNG" alt="smartHome_input"><br><img src="picture/day2/smartHome_successful.PNG" alt="smartHome_sucessful"><br><img src="picture/day2/smartHome_successful_2.PNG" alt="smartHome_sucessful_2"><br><img src="picture/day2/smartHome_fail.PNG" alt="smartHome_fail"></li></ul>
 
 <footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
 </body>

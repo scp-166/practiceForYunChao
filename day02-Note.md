@@ -58,16 +58,16 @@
 - 在ui设计模式中，右击`button`选择转到槽，选择`clicked()`->`OK`，进入函数编辑界面添加功能代码:
 - 按下按键时改变LED状态
 
-- 练习
-    - 完成布局后，添加新的界面
-    	1.![step_one](./picture/day2/add_dialog_class.PNG)
-		2.![step_two](./picture/day2/choose item.PNG)
-		3.![step_three](./picture/day2/total_system.PNG)
-		4.添加代码(SmartHome.h中)
+## 练习
+- 完成布局后，添加新的界面
+1.![step_one](./picture/day2/add_dialog_class.PNG)
+2.![step_two](./picture/day2/choose item.PNG)
+3.![step_three](./picture/day2/total_system.PNG)
+4.添加代码(SmartHome.h中)
             private:
             Ui::SmartHome *ui;
             Dialog *w;	//加这一句
-		5.添加代码(SmartHome.cpp中)
+5.添加代码(SmartHome.cpp中)
             void SmartHome::on_confirmBtn_clicked()
         		{
             //获取文本框中的信息

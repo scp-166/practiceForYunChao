@@ -14,7 +14,16 @@
 **问题**
 保存视频使用mplyaer播放速率很快
 **解决**
-`File.write((const char *)Frame.buf, Frame.length);`在一次使用多次即可
+`File.write((const char *)Frame.buf, Frame.length);`写多次即可
+    **问题**
+    找不到`/dev/video0`
+    **解决**
+    在不运行ubuntu情况下点击虚拟机->设置->usb控制器->勾上显示所有usb输入设备，开启ubuntu后插入摄像头，在ubuntu右下角一排图标找到一个camera图标(名字是Z–start pc camera)右击连接即可，还找不到就右击断开再连接
+    ![usb](./picture/day6/usb.PNG)
+    and
+    ![camera](./picture/day6/camera.PNG)
+
+
 - 代码：
         void qCamera::on_recording_button_clicked()
         {
@@ -48,7 +57,7 @@
                          ui->videoshow->setPixmap(pix);
                          for (int i=0; i<2; i++)	//增加帧
                              File.write((const char *)Frame.buf, Frame.length);
-                         cm.Delay(1);	//不延时会无法显示图形，但是保存视频不受印象
+                         cm.Delay(1);	//不延时会无法显示图形，但是保存视频不受影响
                      }
                     File.close();
                     QMessageBox::warning(this, "information","recording stop!");
